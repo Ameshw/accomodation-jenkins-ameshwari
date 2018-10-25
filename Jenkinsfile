@@ -1,14 +1,22 @@
 pipeline{
   agent any
     stages{
-      stage('Hello World!'){
+      stage('Checkout'){
         steps{
-          sh 'echo hello world!'
+          checkout scm!'
       }
     }
-     stage('Hello World2!'){
+      //Building the web-app
+     stage('Build web-app'){
         steps{
-          sh 'echo hello world2!'
+          sh 'mvn -f /home/robot/.jenkins/workspace/test-jenkins-pipeline/hoteljsf'
+      }
+    }
+      //Building the web-services
+     stage('Build web-service'){
+        steps{
+          sh 'mvn -f /home/robot/.jenkins/workspace/test-jenkins-pipeline/hoteljsf'
+'
       }
     }
   }
